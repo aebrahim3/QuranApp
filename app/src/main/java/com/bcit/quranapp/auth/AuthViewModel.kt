@@ -42,7 +42,7 @@ class AuthViewModel @Inject constructor(
                 // We want to sign in through Google. Also, the accounts that
                 // that show up in the picker should not be restricted, but
                 // rather all device accounts will be displayed. We also
-                // give Google our client ID to make clear to Google what
+                // give Google our client ID to make clear to Google
                 // what app is seeking its token.
                 val googleIdOption = GetGoogleIdOption.Builder()
                     .setFilterByAuthorizedAccounts(false)
@@ -61,7 +61,7 @@ class AuthViewModel @Inject constructor(
 
                 // Builds a getCredentialResponse() object, which
                 // contains the request (in which is the specification
-                // that all Google accounts will be displayed and the client ID.
+                // that all Google accounts will be displayed and the client ID.)
                 // We also specify what screen the picker will be on top of,
                 // which is this screen.
                 val result = credentialManager.getCredential(
