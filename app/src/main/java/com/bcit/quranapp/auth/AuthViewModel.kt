@@ -93,13 +93,13 @@ class AuthViewModel @Inject constructor(
                 _authState.value = AuthState.Error(e.message ?: "Something went wrong")
             }
         }
-            }
+    }
 
     fun signOut() {
         auth.signOut()
         _authState.value = AuthState.Idle
-        }
-
+    }
+}
     sealed class AuthState {
         object Idle : AuthState()
         object Loading : AuthState()
@@ -108,58 +108,3 @@ class AuthViewModel @Inject constructor(
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-
-
-
-        }
-
-    }
-
-
-
-
-}

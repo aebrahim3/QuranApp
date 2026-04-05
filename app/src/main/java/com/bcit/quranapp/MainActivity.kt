@@ -1,4 +1,4 @@
-package com.amjadh.quranapp
+package com.bcit.quranapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.amjadh.quranapp.ui.theme.QuranAppTheme
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.bcit.quranapp.auth.AuthViewModel
+import com.bcit.quranapp.auth.LoginScreen
+import com.bcit.quranapp.ui.theme.QuranAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

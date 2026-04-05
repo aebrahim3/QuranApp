@@ -1,4 +1,4 @@
-package com.amjadh.quranapp.ui.theme
+package com.bcit.quranapp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

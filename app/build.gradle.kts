@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -8,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace = "com.amjadh.quranapp"
+    namespace = "com.bcit.quranapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.amjadh.quranapp"
+        applicationId = "com.bcit.quranapp"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -64,8 +66,8 @@ dependencies {
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:34.11.0"))
-    implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-analytics")
 
     // Google Sign-In

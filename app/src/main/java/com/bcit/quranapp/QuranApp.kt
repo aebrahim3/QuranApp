@@ -1,4 +1,4 @@
-package com.amjadh.quranapp
+package com.bcit.quranapp
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

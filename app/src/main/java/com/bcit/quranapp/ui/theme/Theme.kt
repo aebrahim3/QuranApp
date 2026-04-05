@@ -1,4 +1,4 @@
-package com.amjadh.quranapp.ui.theme
+package com.bcit.quranapp.ui.theme
 
 import android.app.Activity
 import android.os.Build
