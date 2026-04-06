@@ -51,8 +51,8 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.9.0")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.51")
-    ksp("com.google.dagger:hilt-compiler:2.51")
+    implementation("com.google.dagger:hilt-android:2.56")
+    ksp("com.google.dagger:hilt-compiler:2.56")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Retrofit + Gson
