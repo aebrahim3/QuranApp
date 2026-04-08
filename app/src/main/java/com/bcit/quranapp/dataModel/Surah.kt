@@ -6,5 +6,7 @@ data class Surah(
     val englishName: String,
     val englishNameTranslation: String,
     val numberOfAyahs: Int,
-    val revelationType: String
+    val revelationPlace: String,
+    val revelationOrder: Int,
+    val bismillahPre: Boolean
 )
