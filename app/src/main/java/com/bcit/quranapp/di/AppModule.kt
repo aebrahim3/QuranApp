@@ -40,6 +40,6 @@ object AppModule {
      */
     @Provides
     @Singleton
-    fun provideQuranApi(retrofit: Retrofit) = retrofit.create(QuranApi::class.java)
+    fun provideQuranApi(retrofit: Retrofit): QuranApi = retrofit.create(QuranApi::class.java)
 }
 
