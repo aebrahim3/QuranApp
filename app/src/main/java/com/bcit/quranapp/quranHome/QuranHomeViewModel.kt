@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  * We use HiltViewModel to inject QuranApi into this ViewModel.
  * Initially, we want the Surahs to be fetched and the loading
  * screen to show. What fetchSurah() does is that it uses the getSurah()
- * method in the AppModule.kt file to get the usable data using Retrofit and
+ * method defined in the QuranApi interface to get the usable data using Retrofit and
  * Gson. The resulting product gets stored in surahList. We set the
  * _surahState to Success, and Success holds the list of Surahs
  * inside surahList, which holds the ChaptersResponse object.
