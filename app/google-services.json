@@ -12,7 +12,20 @@
           "package_name": "com.bcit.quranapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1093042952838-60s8t0egchb1njk45nvm316spem3ftg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bcit.quranapp",
+            "certificate_hash": "27089ed039eba311b54bdeb8e566724e61538e3a"
+          }
+        },
+        {
+          "client_id": "1093042952838-5qvo3auru6sduhfe76u9k8b8ndqk9j69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAdyXHnsfKwA95fH2ENusKogiLYqWx7ihs"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093042952838-5qvo3auru6sduhfe76u9k8b8ndqk9j69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

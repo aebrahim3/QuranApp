@@ -46,7 +46,7 @@ class AuthViewModel @Inject constructor(
                 // what app is seeking its token.
                 val googleIdOption = GetGoogleIdOption.Builder()
                     .setFilterByAuthorizedAccounts(false)
-                    .setServerClientId("AIzaSyAdyXHnsfKwA95fH2ENusKogiLYqWx7ihs")
+                    .setServerClientId("1093042952838-5qvo3auru6sduhfe76u9k8b8ndqk9j69.apps.googleusercontent.com")
                     .build()
 
                 //Build a request in which is specified that

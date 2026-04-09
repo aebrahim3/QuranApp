@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bcit.quranapp.auth.AuthViewModel
 import com.bcit.quranapp.auth.LoginScreen
+import com.bcit.quranapp.quranHome.QuranHomeScreen
 import com.bcit.quranapp.ui.theme.QuranAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
@@ -42,6 +43,11 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable("home") {
+                        QuranHomeScreen(
+                            onSurahClick = { surah ->
+                                //
+                            }
+                        )
                     }
                 }
             }
