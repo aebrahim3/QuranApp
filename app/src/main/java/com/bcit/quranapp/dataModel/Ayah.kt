@@ -1,5 +1,8 @@
 package com.bcit.quranapp.dataModel
 
+import com.bcit.quranapp.dto.TranslationDto
+import com.google.gson.annotations.SerializedName
+
 /**
  * All these properties pop up on the card whether the user clicks on it or not. Tafsir and audio are
  * on demand. That is why they are not included in the data class. If they were fetched every time
@@ -7,7 +10,10 @@ package com.bcit.quranapp.dataModel
  * use those features.
  */
 data class Ayah(
+    @SerializedName("verse_number")
     val number: Int,
+    @SerializedName("text_uthmani")
     val arabicText: String,
-    val translation: String
+    @SerializedName("translations")
+    val translation: List<TranslationDto>
 )
