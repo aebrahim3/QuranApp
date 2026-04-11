@@ -29,7 +29,7 @@ interface QuranApi {
     @GET("verses/by_chapter/{chapter_number}")
     suspend fun getAyahs(
         @Path("chapter_number") chapterNumber: Int,
-        @Query("translations") translation: String = "203",
+        @Query("translations") translation: Int = 203,
         @Query("fields") text: String = "text_uthmani",
         @Query("per_page") perPage: Int = 286
     ) : VersesResponse
