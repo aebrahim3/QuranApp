@@ -52,8 +52,11 @@ class MainActivity : ComponentActivity() {
                     }
                     composable("ayahs/{chapterNumber}") {
                         AyahsPageScreen(
-
+                            onAyahClick = { ayah ->
+                                // Handle ayah click
+                            }
                         )
+
                     }
                 }
             }
