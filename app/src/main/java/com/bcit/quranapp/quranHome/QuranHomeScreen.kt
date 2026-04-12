@@ -1,5 +1,6 @@
 package com.bcit.quranapp.quranHome
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -47,6 +50,7 @@ fun QuranHomeScreen(
                 items(surahs) { surah ->
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(16.dp)
+                            .clickable { onSurahClick(surah) }
                     ) {
                         Text(text = surah.number.toString(),
                             fontSize = 12.sp)
@@ -73,8 +77,13 @@ fun QuranHomeScreen(
                                 fontSize = 12.sp)
                         }
                     }
-
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                        thickness = 1.dp
+                    )
                 }
+
+
 
             }
         }

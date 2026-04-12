@@ -31,7 +31,8 @@ interface QuranApi {
         @Path("chapter_number") chapterNumber: Int,
         @Query("translations") translation: Int = 203,
         @Query("fields") text: String = "text_uthmani",
-        @Query("per_page") perPage: Int = 286
+        @Query("per_page") perPage: Int = 286,
+        @Query("tafsirs") tafsirId: Int = 168
     ) : VersesResponse
 
 

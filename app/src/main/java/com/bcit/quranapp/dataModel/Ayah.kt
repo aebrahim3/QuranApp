@@ -1,5 +1,6 @@
 package com.bcit.quranapp.dataModel
 
+import com.bcit.quranapp.dto.TafsirsDto
 import com.bcit.quranapp.dto.TranslationDto
 import com.google.gson.annotations.SerializedName
 
@@ -15,5 +16,7 @@ data class Ayah(
     @SerializedName("text_uthmani")
     val arabicText: String,
     @SerializedName("translations")
-    val translation: List<TranslationDto>
+    val translation: List<TranslationDto>,
+    @SerializedName("tafsirs")
+    val tafsir: List<TafsirsDto>
 )
