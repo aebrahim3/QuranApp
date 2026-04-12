@@ -52,9 +52,7 @@ fun QuranHomeScreen(
                             fontSize = 12.sp)
                         Spacer(modifier = Modifier.width(16.dp))
 
-                        Column (modifier = Modifier.weight(1f)){
-                            Text(text = surah.arabicName,
-                                fontSize = 16.sp)
+                        Column (modifier = Modifier.padding(start = 8.dp)){
                             Text(text = surah.englishName,
                             fontSize = 12.sp)
                             Text(text = surah.englishNameTranslation.name,
@@ -62,6 +60,10 @@ fun QuranHomeScreen(
                             Text(text = surah.numberOfAyahs.toString(),
                                 fontSize = 12.sp)
                         }
+
+                        Spacer(modifier = Modifier.weight(1f))
+                        Text(text = surah.arabicName,
+                            fontSize = 20.sp)
 
                         Column(modifier = Modifier.padding(start = 8.dp),
                             horizontalAlignment = Alignment.End) {
