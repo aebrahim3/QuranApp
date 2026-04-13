@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bcit.quranapp.dataModel.Ayah
+import com.bcit.quranapp.dataModel.Tafsir
 import com.bcit.quranapp.network.QuranApi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -46,6 +47,9 @@ class AyahsPageViewModel @Inject constructor(
     private val _ayahState = MutableStateFlow<AyahState>(AyahState.Loading)
     val ayahState: StateFlow<AyahState> = _ayahState
 
+    private val _tafsirState = MutableStateFlow<TafsirState>(TafsirState.Loading)
+    val tafsirState: StateFlow<TafsirState> = _tafsirState
+
     val chapterNumber = savedStateHandle.get<Int>("chapterNumber") ?: 1
 
     init {
@@ -56,7 +60,6 @@ class AyahsPageViewModel @Inject constructor(
         _ayahState.value = AyahState.Loading
         viewModelScope.launch {
             try {
-
                 val ayahList = quranApi.getAyahs(chapterNumber)
                 _ayahState.value = AyahState.Success(ayahList.verses)
             } catch (e: Exception) {
@@ -67,6 +70,25 @@ class AyahsPageViewModel @Inject constructor(
 
 
     }
+
+
+    fun fetchTafsir(ayahNumber: Int) {
+        _tafsirState.value = TafsirState.Loading
+        viewModelScope.launch {
+            try {
+                val tafsir = quranApi.getTafsir(
+                    168,
+                    "$chapterNumber:$ayahNumber"
+                )
+                _tafsirState.value = TafsirState.Success(tafsir)
+            } catch (e: Exception) {
+                _tafsirState.value = TafsirState.Error(e.message ?: "Something went wrong")
+            }
+
+
+        }
+
+    }
 }
 
     sealed class AyahState {
@@ -75,3 +97,12 @@ class AyahsPageViewModel @Inject constructor(
         data class Error(val message: String) : AyahState()
 
     }
+
+    sealed class TafsirState {
+        object Loading : TafsirState()
+        data class Success(val tafsir: Tafsir) : TafsirState()
+        data class Error(val message: String) : TafsirState()
+    }
+
+
+

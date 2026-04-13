@@ -17,6 +17,4 @@ data class Ayah(
     val arabicText: String,
     @SerializedName("translations")
     val translation: List<TranslationDto>,
-    @SerializedName("tafsirs")
-    val tafsir: List<TafsirsDto>
 )

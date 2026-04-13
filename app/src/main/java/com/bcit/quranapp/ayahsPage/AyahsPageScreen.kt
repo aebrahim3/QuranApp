@@ -1,6 +1,5 @@
 package com.bcit.quranapp.ayahsPage
 
-import android.R.attr.text
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.room.util.TableInfo
 import com.bcit.quranapp.dataModel.Ayah
 import com.bcit.quranapp.ayahsPage.AyahsPageViewModel
 
@@ -41,7 +39,10 @@ import com.bcit.quranapp.ayahsPage.AyahsPageViewModel
  * of AyahState.Success and the other a response object, or wrapper, that holds
  * list of verses.
  *
- *
+ * I ended up using a ViewModel function in the UI. I did not know how else to do it.
+ * fetchTafsir(Int) now takes a parameter, which can be the value after the ":"
+ * in the API call. In the endpoint, we have s:a, where s is Surah and
+ * a is Ayah. Now the parameter can sit in a.
  */
 @Composable
 fun AyahsPageScreen(
@@ -49,7 +50,10 @@ fun AyahsPageScreen(
     viewModel: AyahsPageViewModel = hiltViewModel()
 ) {
     val ayahState by viewModel.ayahState.collectAsState()
-    var isExpanded by remember { mutableStateOf(false) }
+
+    val tafsirState by viewModel.tafsirState.collectAsState()
+
+
 
     when (ayahState) {
         is AyahState.Loading -> {
@@ -66,8 +70,13 @@ fun AyahsPageScreen(
             val ayahs = (ayahState as AyahState.Success).ayahList
             LazyColumn {
                 items(ayahs) { ayah ->
+                    var isExpanded by remember { mutableStateOf(false) }
                     Row(modifier = Modifier.fillMaxWidth().padding(8.dp)
-                        .clickable { isExpanded = !isExpanded }
+                        .clickable { isExpanded = !isExpanded
+                        if (!isExpanded) {
+                            viewModel.fetchTafsir(ayah.number)
+                        }
+                        } // Toggle isExpanded when the row is clicked
                         ) {
                         Column {
                             Spacer(modifier = Modifier.height(24.dp))
@@ -83,8 +92,29 @@ fun AyahsPageScreen(
                             }
                             Spacer(modifier = Modifier.height(16.dp))
                             AnimatedVisibility(visible = isExpanded) {
-                                Text(text = ayah.tafsir.first().text, fontSize = 15.sp)
+                                when (tafsirState) {
+                                    is TafsirState.Loading -> {
+                                        Box(
+                                            modifier = Modifier.fillMaxSize(),
+                                            contentAlignment = Alignment.Center
+                                        ) {
+                                            CircularProgressIndicator()
+                                        }
+                                    }
+                                    is TafsirState.Success -> {
+                                        val tafsir = (tafsirState as TafsirState.Success).tafsir
+                                        Text(text = tafsir.text, fontSize = 15.sp)
+
+                                    }
+                                    is TafsirState.Error -> {
+                                        val errorMessage = (tafsirState as TafsirState.Error).message
+                                        Text(text = errorMessage)
+
+                                    }
+
+
                             }
+                        }
                             Spacer(modifier = Modifier.height(20.dp))
 
                         }

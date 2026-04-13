@@ -1,6 +1,7 @@
 package com.bcit.quranapp.network
 
 import com.bcit.quranapp.dataModel.ChaptersResponse
+import com.bcit.quranapp.dataModel.Tafsir
 import com.bcit.quranapp.dataModel.VersesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -31,9 +32,16 @@ interface QuranApi {
         @Path("chapter_number") chapterNumber: Int,
         @Query("translations") translation: Int = 203,
         @Query("fields") text: String = "text_uthmani",
-        @Query("per_page") perPage: Int = 286,
-        @Query("tafsirs") tafsirId: Int = 168
+        @Query("per_page") perPage: Int = 286
     ) : VersesResponse
+
+    @GET("tafsirs/{tafsir_id}/by_ayah/{ayah_key}")
+    suspend fun getTafsir(
+        @Path("tafsir_id") tafsirId: Int = 168,
+        @Path("ayah_key") ayahKey: String
+
+    ) : Tafsir
+
 
 
 }
